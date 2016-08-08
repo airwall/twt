@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-
+ruby '2.3.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0'
+gem 'rails', '~> 5'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
@@ -29,10 +29,28 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'slim-rails'
+gem 'devise'
+#authorization
+gem "pundit"
+
+
+group :test do
+  gem 'capybara-screenshot'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'poltergeist'
+  gem 'rails-controller-testing'
+  gem 'rubocop', require: false
+  gem 'rubocop-rspec'
+end
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
+  gem 'pry-byebug'
+  gem 'rspec', '~> 3.5.0.beta3'
+  gem 'rspec-rails', '~> 3.5.0beta3'
+  gem 'factory_girl_rails'
 end
 
 group :development do
