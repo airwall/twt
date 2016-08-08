@@ -33,6 +33,8 @@ gem 'slim-rails'
 gem 'devise'
 #authorization
 gem "pundit"
+gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped'
+gem 'bootstrap-sass', '~> 3.3.6'
 
 
 group :test do
