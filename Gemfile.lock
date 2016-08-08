@@ -1,9 +1,3 @@
-GIT
-  remote: git://github.com/king601/devise-bootstrapped.git
-  revision: 152ef108593758f4c93d0e303e9f2a545371fe43
-  specs:
-    devise-bootstrapped (0.1.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -272,7 +266,6 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   database_cleaner
   devise
-  devise-bootstrapped!
   factory_girl_rails
   jbuilder (~> 2.5)
   jquery-rails
