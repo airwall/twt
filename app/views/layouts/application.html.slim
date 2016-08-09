@@ -6,32 +6,31 @@ html
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  body
+  body class="#{!user_signed_in? ? 'bg-static' : ''  }"
     .navbar.navbar-inverse.navbar-static-top
       .container
-        a.navbar-brand href="#"  Mr. M.'s Sticky Footer Example'
+        a.navbar-brand href="#"  Twitter Clone
         button.navbar-toggle data-target=".navHeaderCollapse" data-toggle="collapse"
         .collapse.navbar-collapse.navHeaderCollapse
-          ul.nav.navbar-nav.navbar-right
-            li.active
-              a href="#"  Home
-            li
-              a href="#"  Blog
-            li.dropdown
-              a.dropdown-toggle data-toggle="dropdown" href="#"  Social Media
-              ul.dropdown-menu
-                li
-                  a href="#"  Twitter
-                li
-                  a href="#"  Facebook
-                li
-                  a href="#"  Google+
-                li
-                  a href="#"  Instagram
-            li
-              a href="#"  About
-            li
-              a href="#"  Contact
+          - if user_signed_in?
+            ul.nav.navbar-nav.navbar-right
+              li
+                = link_to(edit_user_registration_path) do
+                  = "@#{current_user.username.capitalize}"
+              li
+                = link_to destroy_user_session_path, data: { confirm: 'Are you certain you want sign out?' }, :method => :delete, class: "signout" do
+                  span.glyphicon.glyphicon-log-out
+                  |  Sign Out
+          - else
+            ul.nav.navbar-nav.navbar-right
+              li
+                = link_to(new_user_session_path) do
+                  span.glyphicon.glyphicon-log-in
+                  |  Sign In
+              li
+                = link_to(new_user_registration_path) do
+                  span.glyphicon.glyphicon-ok-sign
+                  |  Sign Up
     .container
       = yield
 .navbar.navbar-default.navbar-fixed-bottom

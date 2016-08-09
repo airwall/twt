@@ -16,6 +16,11 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+ .bg-static {
+   background-image: url("http://cdn.playbuzz.com/cdn/4cf56ad4-a3c1-4d4d-9646-b9cb6d96a9fa/c0fcaf3a-a22b-498b-8a4b-d60918ad013d.jpg");
+   background-size: 100% auto;
+ }
+
  .twPc-div {
     background: #fff none repeat scroll 0 0;
     border: 1px solid #e1e8ed;
