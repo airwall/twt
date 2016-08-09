@@ -1,0 +1,24 @@
+.row
+  .col-sm-offset-0.col-sm-4
+    = render 'shared/user_info', user: current_user
+  .col-sm-offset-0.col-sm-6
+    .main-box.no-header.clearfix
+      .main-box-body.clearfix
+        .table-responsive
+          table.table.user-list
+            thead
+              tr
+                th.col-xs-4
+                th.col-xs-2
+            - @users.each do |user|
+              tbody
+                tr
+                  td
+                    img alt="" src="http://bootdey.com/img/Content/user_#{rand(3)}.jpg" /
+                    = link_to "#{user.username}", user_path(user), class: "user-link"
+                    = link_to user_path(user) do
+                      span.user-subhead @#{user.username}
+                  td.text-center
+                    span.label.label-default Follow
+                    p
+                      span.user-subhead Tweets: #{user.tweets.count}

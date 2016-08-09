@@ -16,6 +16,10 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+   body{
+      background:#F5F8FA;
+  }
+
  .bg-static {
    background-image: url("http://cdn.playbuzz.com/cdn/4cf56ad4-a3c1-4d4d-9646-b9cb6d96a9fa/c0fcaf3a-a22b-498b-8a4b-d60918ad013d.jpg");
    background-size: 100% auto;
@@ -135,4 +139,60 @@ ul.twPc-Arrange {
 }
 .history{
     color: rgb(200, 199, 199);
+}
+
+.main-box.no-header {
+    padding-top: 20px;
+}
+.main-box {
+    background: #FFFFFF;
+    margin-bottom: 5px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.table a.table-link.danger {
+    color: #e74c3c;
+}
+.label {
+    border-radius: 3px;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+.user-list tbody td .user-subhead {
+    font-size: 0.75em;
+    font-style: normal;
+}
+.user-list tbody td .user-link {
+    display: block;
+    font-size: 1.25em;
+    padding-top: 3px;
+    margin-left: 60px;
+}
+a {
+    color: #3498db;
+    outline: none!important;
+}
+.user-list tbody td>img {
+    position: relative;
+    max-width: 50px;
+    float: left;
+    margin-right: 15px;
+}
+
+.table thead tr th {
+    text-transform: uppercase;
+    font-size: 0.875em;
+}
+.table thead tr th {
+    border-bottom: 2px solid #e7ebee;
+}
+.table tbody tr td:first-child {
+    font-size: 1.125em;
+    font-weight: 300;
+}
+.table tbody tr td {
+    font-size: 0.875em;
+    vertical-align: middle;
+    border-top: 1px solid #e7ebee;
+    padding: 12px 8px;
 }

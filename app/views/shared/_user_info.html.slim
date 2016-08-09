@@ -3,28 +3,28 @@
   div
     .twPc-button
       /! Twitter Button | you can get from: https://about.twitter.com/tr/resources/buttons#follow
-      a.btn.btn-primary.btn-sm  href="https://twitter.com/mertskaplan"  Follow
+      a.btn.btn-primary.btn-sm  href=""  Follow
       /! Twitter Button
-    a.twPc-avatarLink href="https://twitter.com/mertskaplan" title=("Mert Salih Kaplan")
-      img.twPc-avatarImg alt=("Mert Salih Kaplan") src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/ce54bf11889067.562541ef7cde4.png" /
+    a.twPc-avatarLink href="#{user_path(user)}" title=("#{user.username}")
+      img.twPc-avatarImg alt=("#{user.username}") src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/ce54bf11889067.562541ef7cde4.png" /
     .twPc-divUser
       .twPc-divName
         =
       span
-        a href="https://twitter.com/mertskaplan"
+        = link_to(user_path(user)) do
           | @
-          span #{current_user.username}
+          span #{user.username}
     .twPc-divStats
       ul.twPc-Arrange
         li.twPc-ArrangeSizeFit
-          a href="https://twitter.com/mertskaplan" title=("9.840 Tweet")
+          = link_to(user_path(user)) do
             span.twPc-StatLabel.twPc-block Tweets
-            span.twPc-StatValue #{current_user.tweets.count}
+            span.twPc-StatValue #{user.tweets.count}
         li.twPc-ArrangeSizeFit
-          a href="https://twitter.com/mertskaplan/following" title=("885 Following")
-            span.twPc-StatLabel.twPc-block Following
-            span.twPc-StatValue #{current_user.following.count}
+          = link_to(following_user_path(user)) do
+              span.twPc-StatLabel.twPc-block Following
+              span.twPc-StatValue #{user.following.count}
         li.twPc-ArrangeSizeFit
-          a href="https://twitter.com/mertskaplan/followers" title=("#{current_user.followers}")
+          = link_to(followers_user_path(user)) do
             span.twPc-StatLabel.twPc-block Followers
-            span.twPc-StatValue #{current_user.followers.count}
+            span.twPc-StatValue #{user.followers.count}
