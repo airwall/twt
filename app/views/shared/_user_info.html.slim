@@ -1,0 +1,30 @@
+.twPc-div
+  a.twPc-bg.twPc-block
+  div
+    .twPc-button
+      /! Twitter Button | you can get from: https://about.twitter.com/tr/resources/buttons#follow
+      a.btn.btn-primary.btn-sm  href="https://twitter.com/mertskaplan"  Follow
+      /! Twitter Button
+    a.twPc-avatarLink href="https://twitter.com/mertskaplan" title=("Mert Salih Kaplan")
+      img.twPc-avatarImg alt=("Mert Salih Kaplan") src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/ce54bf11889067.562541ef7cde4.png" /
+    .twPc-divUser
+      .twPc-divName
+        =
+      span
+        a href="https://twitter.com/mertskaplan"
+          | @
+          span #{current_user.username}
+    .twPc-divStats
+      ul.twPc-Arrange
+        li.twPc-ArrangeSizeFit
+          a href="https://twitter.com/mertskaplan" title=("9.840 Tweet")
+            span.twPc-StatLabel.twPc-block Tweets
+            span.twPc-StatValue #{current_user.tweets.count}
+        li.twPc-ArrangeSizeFit
+          a href="https://twitter.com/mertskaplan/following" title=("885 Following")
+            span.twPc-StatLabel.twPc-block Following
+            span.twPc-StatValue #{current_user.following.count}
+        li.twPc-ArrangeSizeFit
+          a href="https://twitter.com/mertskaplan/followers" title=("#{current_user.followers}")
+            span.twPc-StatLabel.twPc-block Followers
+            span.twPc-StatValue #{current_user.followers.count}

@@ -7,4 +7,34 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = yield
+    .navbar.navbar-inverse.navbar-static-top
+      .container
+        a.navbar-brand href="#"  Mr. M.'s Sticky Footer Example'
+        button.navbar-toggle data-target=".navHeaderCollapse" data-toggle="collapse"
+        .collapse.navbar-collapse.navHeaderCollapse
+          ul.nav.navbar-nav.navbar-right
+            li.active
+              a href="#"  Home
+            li
+              a href="#"  Blog
+            li.dropdown
+              a.dropdown-toggle data-toggle="dropdown" href="#"  Social Media
+              ul.dropdown-menu
+                li
+                  a href="#"  Twitter
+                li
+                  a href="#"  Facebook
+                li
+                  a href="#"  Google+
+                li
+                  a href="#"  Instagram
+            li
+              a href="#"  About
+            li
+              a href="#"  Contact
+    .container
+      = yield
+.navbar.navbar-default.navbar-fixed-bottom
+  .container
+    p.navbar-text.pull-left
+      | © 2016
