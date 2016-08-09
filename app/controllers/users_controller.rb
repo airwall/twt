@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: :show
-  before_action :check_user, only: :show
+  before_action :set_user, only: [:show, :followers, :following]
+  before_action :set_tweets, only: :show
   before_action :authenticate_user!
 
   def index
@@ -8,18 +8,28 @@ class UsersController < ApplicationController
   end
 
   def show
-    @tweets = @user.tweets.order('created_at DESC')
   end
+
+  def followers
+    @followers = @user.followers
+  end
+
+  def following
+    @following = @user.following
+  end
+
 
   private
 
-  def check_user
-    if @user == current_user
-      redirect_to root_path
-    end
-  end
-
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def set_tweets
+    if @user == current_user
+      @tweets = Tweet.where("user_id in (?) OR user_id = ?", current_user.following_ids, current_user).order("created_at DESC")
+    else
+      @tweets = Tweet.where(user_id: @user).order("created_at DESC")
+    end
   end
 end

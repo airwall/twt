@@ -2,12 +2,18 @@ Rails.application.routes.draw do
   devise_for :users
 
   authenticated :user do
-    root to: "home#index", as: "home"
+    root to: "users#index", as: "users"
   end
 
   unauthenticated :user do
     root "static_pages#index"
   end
+
+
+  get '/users', to: redirect { |params, request|
+    home = request.env["warden"].user(:user)
+    home ? ('/users/' + home.id) : '/users'
+  }
 
   resources :users do
     member do
