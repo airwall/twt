@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   attr_accessor :login
-  validates_presence_of :username
-  validates_uniqueness_of :username
+  validates :username, presence: true
+  validates :username, uniqueness: true
   has_many :tweets, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
@@ -26,7 +26,7 @@ class User < ApplicationRecord
       where(conditions.to_h).first
     end
   end
-  
+
   # Follows a user.
   def follow(other_user)
     active_relationships.create(followed_id: other_user.id)
