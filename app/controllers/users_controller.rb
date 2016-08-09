@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :followers, :following]
+  before_action :set_user, only: [:show, :followers, :following, :follow, :unfollow]
   before_action :set_tweets, only: :show
   before_action :authenticate_user!
 
   def index
-    @users = User.includes(:tweets).all
+    @user = current_user
+    @users = User.includes(:tweets).where.not(id: current_user.id)
   end
 
   def show
@@ -17,6 +18,17 @@ class UsersController < ApplicationController
   def following
     @following = @user.following
   end
+
+  def follow
+    current_user.follow(@user)
+    redirect_to user_path(@user)
+  end
+
+  def unfollow
+    current_user.unfollow(@user)
+    redirect_to user_path(@user)
+  end
+
 
   private
 
