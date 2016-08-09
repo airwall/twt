@@ -9,10 +9,9 @@ Rails.application.routes.draw do
     root "static_pages#index"
   end
 
-
-  get '/users', to: redirect { |params, request|
+  get "/users", to: redirect { |_params, request|
     home = request.env["warden"].user(:user)
-    home ? ('/users/' + home.id) : '/users'
+    home ? ("/users/" + home.id) : "/users"
   }
 
   resources :users do
