@@ -1,0 +1,15 @@
+.main-box.no-header.clearfix
+  .main-box-body.clearfix
+    .table-responsive
+      table.table
+        tbody
+          tr
+            td
+              p.pull-right.history
+                small #{time_ago_in_words(tweet.created_at)}
+              a.media-left href="#"
+                img src="http://bootdey.com/img/Content/user_#{rand(1..2)}.jpg" /
+              .media-body
+                h4.media-heading.user_name
+                  =link_to "#{tweet.user.username}", user_path(tweet.user)
+                | #{tweet.body}

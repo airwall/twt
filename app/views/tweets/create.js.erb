@@ -1,0 +1,6 @@
+<% if @tweet.errors.present? %>
+  $('.tweet-errors').append("<%= j render 'errors' %>").hide().fadeIn('slow')
+<% else %>
+  $('.tweets').after("<%= j render 'tweets/tweet', tweet: @tweet  %>");
+  $('#tweet_body').val('');
+<% end %>
