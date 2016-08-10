@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_tweet, only: :show
-  before_action :set_user, only: [:show, :followers, :following, :follow, :unfollow]
+  before_action :set_tweet, only: [:show, :timeline]
+  before_action :set_user, only: [:show, :followers, :following, :follow, :unfollow, :timeline]
   respond_to :html, :js
 
   def index
@@ -29,10 +29,15 @@ class UsersController < ApplicationController
     respond_with current_user.unfollow(@user)
   end
 
+  def timeline
+    respond_with @tweets = Tweet.includes(:user).where("user_id IN (?) OR user_id = ?", @user.following_ids, @user.id)
+  end
+
   private
 
   def set_user
     @user = User.find(params[:id])
+    authorize @user
   end
 
   def set_tweet

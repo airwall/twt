@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-
   authenticated :user do
     root to: "users#index", as: "users"
   end
@@ -14,6 +13,7 @@ Rails.application.routes.draw do
     member do
       get :following, :followers
       post :follow, :unfollow
+      get :timeline, as: "timeline"
     end
   end
 

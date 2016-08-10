@@ -15,6 +15,9 @@ html
           - if user_signed_in?
             ul.nav.navbar-nav.navbar-right
               li
+                = link_to(timeline_user_path(current_user)) do
+                  | Timeline
+              li
                 = link_to(users_path) do
                   | Users
               li
