@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe TweetsController, type: :controller do
   sign_in_user
@@ -18,7 +18,7 @@ RSpec.describe TweetsController, type: :controller do
     end
 
     context "with invalid attributes via AJAX" do
-      let(:invalid_ajax_tweet) {  post :create, params: { user_id: @user.id, tweet: attributes_for(:invalid_tweet) }, format: :js }
+      let(:invalid_ajax_tweet) { post :create, params: { user_id: @user.id, tweet: attributes_for(:invalid_tweet) }, format: :js }
 
       it "Don't save tweet in database" do
         expect { invalid_ajax_tweet }.to_not change(Tweet, :count)
@@ -29,6 +29,5 @@ RSpec.describe TweetsController, type: :controller do
         expect(response).to render_template :create
       end
     end
-
   end
 end

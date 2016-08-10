@@ -42,5 +42,4 @@ feature "User relationships" do
       end
     end
   end
-
 end

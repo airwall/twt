@@ -8,7 +8,7 @@ require "rspec/rails"
 require "shoulda/matchers"
 require "capybara/rspec"
 require "capybara/poltergeist"
-require 'capybara-screenshot/rspec'
+require "capybara-screenshot/rspec"
 require "pundit/rspec"
 
 Capybara.configure do |c|
