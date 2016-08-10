@@ -10,6 +10,11 @@ require "capybara/rspec"
 require "capybara/poltergeist"
 require 'capybara-screenshot/rspec'
 require "pundit/rspec"
+
+Capybara.configure do |c|
+  c.javascript_driver = :poltergeist
+end
+
 # Add additional requires below this line. Rails is not loaded until this point!
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -35,6 +40,7 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.extend ControllerMacros, type: :controller
+  config.include FeatureHelper, type: :feature
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
