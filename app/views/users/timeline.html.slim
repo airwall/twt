@@ -6,5 +6,6 @@
     .tweets
       = render @tweets
     .paginate
-    = link_to 'Load More Tweets', timeline_user_path(@user, :page => @tweets.next_page), :class => 'load-more-tweets', :remote => true if @tweets.next_page
+    = link_to 'Load More Tweets', timeline_user_path(@user, :page => @tweets.next_page), :class => 'load-more-tweets btn btn-info btn-block', :remote => true if @tweets.next_page
+    a href="#" class="scrollToTop" 
     .bottom-indent

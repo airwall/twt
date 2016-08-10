@@ -212,3 +212,23 @@ a {
     border-top: 1px solid #e7ebee;
     padding: 12px 8px;
 }
+
+.scrollToTop{
+	width:60px;
+	height:60px;
+	padding:10px;
+	text-align:center;
+	font-weight: bold;
+	color: #444;
+	text-decoration: none;
+	position:fixed;
+	bottom:80px;
+	right:20px;
+	display:none;
+	background-image: url('http://fabacademy.org/archives/2015/eu/students/mason.david/images/arrowup.png');
+  background-size: 110% auto;
+  background-position: 0 50%;
+}
+.scrollToTop:hover{
+	text-decoration:none;
+}
