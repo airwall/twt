@@ -28,7 +28,6 @@ class UsersController < ApplicationController
     respond_with current_user.unfollow(@user)
   end
 
-
   private
 
   def set_user
