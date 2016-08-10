@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe UsersController, type: :controller do
   sign_in_user
   let(:users) { create_list(:user, 4) }
-  let(:tweets) { create_list(:tweet, 2, user_id: @user.id) }
+  let!(:tweets) { create_list(:tweet, 2, user_id: @user.id) }
   let(:following) { create(:user) }
   let(:followers) { create(:user) }
 
@@ -19,14 +19,18 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "/GET show" do
-    context "current_user page" do
+    context "Tweets on show page" do
       before { get :show, params: { id: @user.id } }
-      it "populates an array all tweets" do
-        expect(assigns(:tweets)).to match_array(tweets)
+      it "populates all tweets" do
+        expect(tweets).to eq @user.tweets
       end
 
       it "render show view" do
         expect(response).to render_template :show
+      end
+
+      it "assigns the requested user to @user" do
+        expect(assigns(:user)).to eq @user
       end
     end
   end
