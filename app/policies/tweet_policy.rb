@@ -1,0 +1,2 @@
+class TweetPolicy < ApplicationPolicy
+end

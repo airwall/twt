@@ -3,6 +3,7 @@ class TweetsController < ApplicationController
   respond_to :js
 
   def create
+    authorize Tweet
     respond_with @tweet = current_user.tweets.create(tweet_params)
   end
 
