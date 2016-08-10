@@ -10,7 +10,7 @@ RSpec.describe UsersController, type: :controller do
   describe "/GET index" do
     before { get :index }
     it "populates an array all users" do
-      expect(assigns(:users)).to match_array(users << @user)
+      expect(assigns(:users)).to match_array(users)
     end
 
     it "render index view" do
@@ -54,4 +54,33 @@ RSpec.describe UsersController, type: :controller do
       expect(response).to render_template :followers
     end
   end
+
+  describe "/POST follow" do
+    let(:follow_post) { post :follow, params: { id: following.id }, format: :js }
+
+    it "follow user" do
+      expect { follow_post }.to change(@user.reload.active_relationships, :count).by(1)
+    end
+
+    it "render follow.js view" do
+      follow_post
+      expect(response).to render_template :follow
+    end
+  end
+
+  describe "/POST unfollow" do
+    let(:unfollow_post) { post :unfollow, params: { id: following.id }, format: :js }
+    before { @user.follow(following) }
+
+    it "follow user" do
+      expect { unfollow_post }.to change(@user.reload.active_relationships, :count).by(-1)
+    end
+
+    it "render follow.js view" do
+      unfollow_post
+      expect(response).to render_template :unfollow
+    end
+  end
+
+
 end

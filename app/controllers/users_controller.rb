@@ -2,39 +2,34 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :followers, :following, :follow, :unfollow]
   before_action :set_tweets, only: :show
   before_action :authenticate_user!
+  respond_to :html, :js
 
   def index
     @user = current_user
-    @users = User.includes(:tweets).where.not(id: current_user.id)
+    respond_with @users = User.includes(:tweets).where.not(id: current_user.id)
   end
 
   def show
   end
 
   def followers
-    @followers = @user.followers
+    respond_with @followers = @user.followers
   end
 
   def following
-    @following = @user.following
+    respond_with @following = @user.following
   end
 
   def follow
-    current_user.follow(@user)
-    # render_following
+    respond_with current_user.follow(@user)
   end
 
   def unfollow
-    current_user.unfollow(@user)
-    # render_following
+    respond_with current_user.unfollow(@user)
   end
 
 
   private
-
-  # def render_following
-  #   render json: { id: @user.id, following: @user.following }
-  # end
 
   def set_user
     @user = User.find(params[:id])

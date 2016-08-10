@@ -129,6 +129,7 @@ ul.twPc-Arrange {
 }
 .comments-list .media{
     border-bottom: 1px dotted #ccc;
+
 }
 .media-left, img{
     border-radius: 50%;
@@ -149,7 +150,8 @@ ul.twPc-Arrange {
     background: #FFFFFF;
     margin-bottom: 5px;
     -moz-border-radius: 3px;
-    border-radius: 3px;
+    border-radius: 7px;
+    border: 1px solid #e1e8ed;
 }
 .table a.table-link.danger {
     color: #e74c3c;
