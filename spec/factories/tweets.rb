@@ -6,4 +6,8 @@ FactoryGirl.define do
   factory :tweet do
     body
   end
+
+  factory :invalid_tweet, class: "Tweet" do
+    body nil
+  end
 end

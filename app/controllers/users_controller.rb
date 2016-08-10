@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :followers, :following, :follow, :unfollow]
-  before_action :set_tweets, only: :show
   before_action :authenticate_user!
+  before_action :set_tweet, only: :show
+  before_action :set_user, only: [:show, :followers, :following, :follow, :unfollow]
   respond_to :html, :js
 
   def index
@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    respond_with @user
   end
 
   def followers
@@ -34,11 +35,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def set_tweets
-    if @user == current_user
-      @tweets = Tweet.where("user_id in (?) OR user_id = ?", current_user.following_ids, current_user).order("created_at DESC")
-    else
-      @tweets = Tweet.where(user_id: @user).order("created_at DESC")
-    end
+  def set_tweet
+    @tweet = current_user.tweets.build
   end
 end

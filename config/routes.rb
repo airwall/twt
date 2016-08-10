@@ -9,18 +9,13 @@ Rails.application.routes.draw do
     root "static_pages#index"
   end
 
-  get "/users", to: redirect { |_params, request|
-    home = request.env["warden"].user(:user)
-    home ? ("/users/" + home.id) : "/users"
-  }
-
   resources :users do
+    resources :tweets, only: :create
     member do
       get :following, :followers
       post :follow, :unfollow
     end
   end
 
-  resources :tweets, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
 end
