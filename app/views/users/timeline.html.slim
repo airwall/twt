@@ -4,4 +4,4 @@
   .col-sm-offset-0.col-sm-8
     = render "shared/tweet_form", user: @user
     .tweets
-    = render @tweets.order("created_at DESC")
+      = render @tweets.order("created_at DESC")

@@ -9,9 +9,7 @@ feature "Tweets" do
       fill_in "Body", with: "New tweet"
       click_on "Tweet"
     end
-    within ".main-box" do
-      expect(page).to have_content "New tweet"
-    end
+    expect(page).to have_content "New tweet"
   end
 
   scenario "User can't create tweet with valid attributes", js: true do
