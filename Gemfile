@@ -36,6 +36,7 @@ gem "pundit"
 gem 'bootstrap-sass', '~> 3.3.6'
 gem "font-awesome-rails"
 gem "responders"
+gem 'will_paginate', '~> 3.1.0'
 
 
 group :test do
