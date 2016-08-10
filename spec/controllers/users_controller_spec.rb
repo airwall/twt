@@ -1,4 +1,5 @@
 require "rails_helper"
+require "will_paginate/array"
 
 RSpec.describe UsersController, type: :controller do
   sign_in_user
@@ -23,6 +24,10 @@ RSpec.describe UsersController, type: :controller do
       before { get :show, params: { id: @user.id } }
       it "populates all tweets" do
         expect(tweets).to eq @user.tweets
+      end
+
+      it "populates an array tweets per page" do
+        assigns(tweets.paginate(per_page: 10))
       end
 
       it "render show view" do
@@ -85,4 +90,26 @@ RSpec.describe UsersController, type: :controller do
       expect(response).to render_template :unfollow
     end
   end
+
+  describe "/GET timeline" do
+    context "Tweets on timeline page" do
+      before { get :timeline, params: { id: @user.id } }
+      it "populates all tweets" do
+        expect(tweets).to eq @user.tweets
+      end
+
+      it "populates an array tweets per page" do
+        assigns(tweets.paginate(per_page: 10))
+      end
+
+      it "render show view" do
+        expect(response).to render_template :timeline
+      end
+
+      it "assigns the requested user to @user" do
+        expect(assigns(:user)).to eq @user
+      end
+    end
+  end
+
 end

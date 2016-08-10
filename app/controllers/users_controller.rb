@@ -10,7 +10,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    respond_with @user
+    respond_with @tweets = Tweet.includes(:user).where(user_id: @user.id).order("created_at DESC").paginate(:page => params[:page], per_page: 10)
+
   end
 
   def followers
@@ -30,7 +31,10 @@ class UsersController < ApplicationController
   end
 
   def timeline
-    respond_with @tweets = Tweet.includes(:user).where("user_id IN (?) OR user_id = ?", @user.following_ids, @user.id)
+    respond_with @tweets = Tweet.includes(:user).where("user_id IN (?) OR user_id = ?",
+                                                        @user.following_ids,
+                                                        @user.id).order("created_at DESC").paginate(:page => params[:page],
+                                                                                                per_page: 10)
   end
 
   private

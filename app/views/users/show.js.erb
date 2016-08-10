@@ -1,0 +1,6 @@
+$('.tweets').append('<%= render @tweets %>');
+$('a.load-more-tweets').attr('href', "<%= user_path page: @tweets.next_page %>");
+
+<% unless @tweets.next_page %>
+  $('a.load-more-tweets').remove();
+<% end %>

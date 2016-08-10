@@ -4,4 +4,7 @@
   .col-sm-offset-0.col-sm-8
     = render "shared/tweet_form", user: @user
     .tweets
-      = render @tweets.order("created_at DESC")
+      = render @tweets
+    .paginate
+    = link_to 'Load More Tweets', timeline_user_path(@user, :page => @tweets.next_page), :class => 'load-more-tweets', :remote => true if @tweets.next_page
+    .bottom-indent

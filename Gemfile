@@ -38,7 +38,6 @@ gem "font-awesome-rails"
 gem "responders"
 gem 'will_paginate', '~> 3.1.0'
 
-
 group :test do
   gem 'capybara-screenshot'
   gem 'capybara'
