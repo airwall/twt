@@ -2,11 +2,13 @@
   .col-sm-offset-9.col-sm-3
     h4
       | Sign In
-    = render "devise/sessions/form"
-    = link_to "Forgot your password?", new_password_path(:user)
+    .sign_in_form
+      = render "devise/sessions/form"
+      = link_to "Forgot your password?", new_password_path(:user)
 .row
   .col-sm-offset-9.col-sm-3
     br
     h4
       | Create a account
-    = render "devise/registrations/form"
+    .registration_form
+      = render "devise/registrations/form"

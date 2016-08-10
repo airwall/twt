@@ -1,7 +1,9 @@
 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   .form-group
+    = f.label :login, class: 'hidden'
     = f.text_field :login, class: "form-control", placeholder: "email or username"
   .form-group
+    = f.label :password, class: 'hidden'
     = f.password_field :password, class: "form-control", placeholder: "password"
   .form-group
     = f.check_box :remember_me

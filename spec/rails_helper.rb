@@ -8,6 +8,7 @@ require "rspec/rails"
 require "shoulda/matchers"
 require "capybara/rspec"
 require "capybara/poltergeist"
+require 'capybara-screenshot/rspec'
 require "pundit/rspec"
 # Add additional requires below this line. Rails is not loaded until this point!
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
