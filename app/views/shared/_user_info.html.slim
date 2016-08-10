@@ -2,9 +2,8 @@
   a.twPc-bg.twPc-block
   div
     .twPc-button
-      /! Twitter Button | you can get from: https://about.twitter.com/tr/resources/buttons#follow
-      a.btn.btn-primary.btn-sm  href=""  Follow
-      /! Twitter Button
+      - if @user != current_user
+        = render "shared/follow", user: @user
     a.twPc-avatarLink href="#{user_path(user)}" title=("#{user.username}")
       img.twPc-avatarImg alt=("#{user.username}") src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/ce54bf11889067.562541ef7cde4.png" /
     .twPc-divUser
@@ -19,12 +18,12 @@
         li.twPc-ArrangeSizeFit
           = link_to(user_path(user)) do
             span.twPc-StatLabel.twPc-block Tweets
-            span.twPc-StatValue #{user.tweets.count}
+            span.twPc-StatValue#tweets-count #{user.tweets.count}
         li.twPc-ArrangeSizeFit
           = link_to(following_user_path(user)) do
               span.twPc-StatLabel.twPc-block Following
-              span.twPc-StatValue #{user.following.count}
+              span.twPc-StatValue id="following-count_#{@user.id}" #{user.following.count}
         li.twPc-ArrangeSizeFit
           = link_to(followers_user_path(user)) do
             span.twPc-StatLabel.twPc-block Followers
-            span.twPc-StatValue #{user.followers.count}
+            span.twPc-StatValue id="followers-count_#{@user.id}" #{user.followers.count}

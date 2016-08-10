@@ -21,16 +21,20 @@ class UsersController < ApplicationController
 
   def follow
     current_user.follow(@user)
-    redirect_to user_path(@user)
+    # render_following
   end
 
   def unfollow
     current_user.unfollow(@user)
-    redirect_to user_path(@user)
+    # render_following
   end
 
 
   private
+
+  # def render_following
+  #   render json: { id: @user.id, following: @user.following }
+  # end
 
   def set_user
     @user = User.find(params[:id])

@@ -1,0 +1,5 @@
+$("#followers-count_<%= @user.id %>").html("<%= @user.reload.followers.count %>");
+$("#following-count_<%= current_user.id %>").html("<%= current_user.reload.following.count %>");
+$("#button_user_<%= @user.id %>").fadeOut( 0, function(){
+  $(this).html("<%= j render 'shared/follow', user: @user %>").fadeIn('slow');
+  });

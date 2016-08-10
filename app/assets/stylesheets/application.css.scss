@@ -15,6 +15,7 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ @import "font-awesome";
 
    body{
       background:#F5F8FA;
@@ -33,7 +34,7 @@
     max-width: 340px; // orginal twitter width: 290px;
 }
 .twPc-bg {
-    background-image: url("https://static.licdn.com/scds/common/u/images/apps/profile/mobile/photo_default_bg_topcard_v1.png");
+    background-image: url("http://www.freebiesgallery.com/wp-content/uploads/2013/09/paper-backgrounds.jpg");
     background-position: 0 50%;
     background-size: 100% auto;
     border-bottom: 1px solid #e1e8ed;

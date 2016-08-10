@@ -1,0 +1,5 @@
+.button id="button_#{dom_id(user)}"
+  - if current_user.following?(user)
+    = link_to fa_icon("check"), unfollow_user_path(user), method: :post, remote: true, class: 'btn btn-success btn-sm'
+  - else
+    = link_to fa_icon("user-plus").html_safe, follow_user_path(user), method: :post, remote: true, class: 'btn btn-primary btn-sm'

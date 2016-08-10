@@ -10,11 +10,11 @@
                 tbody
                   tr
                     td
-                      img alt="" src="http://bootdey.com/img/Content/user_#{rand(3)}.jpg" /
+                      img alt="" src="http://bootdey.com/img/Content/user_#{rand(1..2)}.jpg" /
                       = link_to "#{user.username}", user_path(user), class: "user-link"
                       = link_to user_path(user) do
                         span.user-subhead @#{user.username}
                     td.text-center
-                      span.label.label-default Follow
+                      = render "shared/follow", user: user
                       p
                         span.user-subhead Tweets: #{user.tweets.count}
