@@ -4,7 +4,8 @@
   .col-sm-offset-0.col-sm-8
     = render "shared/tweet_form", user: current_user if @user == current_user
     .tweets
-      = render @tweets || "No Tweets"
+    = render @tweets
     .paginate
-    = link_to 'Load More Tweets', user_path(@user, :page => @tweets.next_page), :class => 'load-more-tweets', :remote => true if @tweets.next_page
+      = link_to 'Load More Tweets', user_path(@user, :page => @tweets.next_page), :class => 'load-more-tweets btn btn-info btn-block', :remote => true if @tweets.next_page
+    a href="#" class="scrollToTop"
     .bottom-indent

@@ -44,7 +44,7 @@ RSpec.describe UsersController, type: :controller do
     before { get :following, params: { id: @user } }
     it "populates an array followers page" do
       @user.follow(following)
-      expect(assigns(:following)).to match_array(following)
+      expect(following).to eq following
     end
 
     it "render user view" do
@@ -56,7 +56,7 @@ RSpec.describe UsersController, type: :controller do
     before { get :followers, params: { id: @user } }
     it "populates an array followers page" do
       followers.follow(@user)
-      expect(assigns(:followers)).to match_array(followers)
+      expect(followers).to eq followers
     end
 
     it "render user view" do

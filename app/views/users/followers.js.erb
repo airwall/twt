@@ -1,0 +1,6 @@
+$('.users').append('<%= render @users %>');
+$('a.load-more-users').attr('href', "<%= followers_user_path page: @users.next_page %>");
+
+<% unless @users.next_page %>
+  $('a.load-more-users').remove();
+<% end %>

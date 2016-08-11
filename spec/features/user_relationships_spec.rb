@@ -30,9 +30,9 @@ feature "User relationships" do
     sign_in(user)
     visit users_path
 
-    within ".main-box" do
-      click_on "@#{followings.last.username}"
-    end
+
+    click_on "@#{followings.last.username}"
+
     within ".twPc-button" do
       within "#button_user_#{followings.last.id}" do
         find(".btn.btn-primary.btn-sm").click

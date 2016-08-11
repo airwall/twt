@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   resources :users do
     resources :tweets, only: :create
     member do
-      get :following, :followers
+      get  :following, :followers
       post :follow, :unfollow
-      get :timeline, as: "timeline"
+      get  :timeline
     end
   end
 
