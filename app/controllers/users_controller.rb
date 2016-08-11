@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_tweet, only: [:show, :timeline]
-  before_action :set_user, except: :index
+  before_action :set_user, except: [:index, :timeline]
   respond_to :html, :js
 
   def index
@@ -32,6 +32,7 @@ class UsersController < ApplicationController
   end
 
   def timeline
+    @user = current_user
     respond_with @tweets = Tweet.includes(:user).where("user_id IN (?) OR user_id = ?",
                                                        @user.following_ids,
                                                        @user.id).order("created_at DESC").paginate(page: params[:page],
