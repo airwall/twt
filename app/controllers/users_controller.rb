@@ -1,16 +1,18 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_tweet, only: [:show, :timeline]
-  before_action :set_user, only: [:show, :followers, :following, :follow, :unfollow, :timeline]
+  before_action :set_user, except: :index
   respond_to :html, :js
 
   def index
     @user = current_user
-    respond_with @users = User.includes(:tweets).where.not(id: @user.id).paginate(page: params[:page], per_page: 10)
+    respond_with @users = User.includes(:tweets).where.not(id: @user.id).paginate(page: params[:page],
+                                                                                  per_page: 10)
   end
 
   def show
-    respond_with @tweets = Tweet.includes(:user).where(user_id: @user.id).order("created_at DESC").paginate(page: params[:page], per_page: 10)
+    respond_with @tweets = Tweet.includes(:user).where(user_id: @user.id).order("created_at DESC").paginate(page: params[:page],
+                                                                                                            per_page: 10)
   end
 
   def followers
