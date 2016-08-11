@@ -30,7 +30,6 @@ feature "User relationships" do
     sign_in(user)
     visit users_path
 
-
     click_on "@#{followings.last.username}"
 
     within ".twPc-button" do
