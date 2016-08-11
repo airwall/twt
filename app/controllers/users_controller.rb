@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def index
     @user = current_user
-    respond_with @users = User.includes(:tweets).where.not(id: @user.id).paginate(page: params[:page],
+    respond_with @users = User.includes(:tweets).where.not(id: @user.id).order("created_at DESC").paginate(page: params[:page],
                                                                                   per_page: 10)
   end
 
